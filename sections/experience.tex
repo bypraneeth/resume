@@ -7,10 +7,10 @@
     {}
     {
       \begin{cvitems}
-        \item {Designed, developed, and maintained OCI’s \descriptionunderline{customer-facing} inter-region Network Performance Monitoring (NPM) solution, delivering minute-level round-trip time visibility across \descriptionbold{150+ cloud regions} in multiple isolated OCI realms.}
-        \item {Designed, implemented, and migrated the global network telemetry pipeline from PySpark to \descriptionbold{Kafka Streams}, reducing costs from \descriptionbold{\$20K to \$10K/day}.}
-        \item {Extended the global network telemetry pipeline to ingest metrics from OCI's \descriptionunderline{multiplanar network topology}. The overall pipeline processes \descriptionbold{\textasciitilde{}10 billion metrics per minute} across \descriptionunderline{\textasciitilde{}100 regions}, delivering metrics to customer monitoring systems in under \descriptionbold{10 seconds}.}
-        \item {Re-architected and migrated regional operations workloads from dedicated hosts to \descriptionbold{serverless} infrastructure, eliminating host maintenance and reducing infrastructure costs.}
+        \item {Designed, developed, and maintained OCI’s \descriptionunderline{customer-facing} realtime inter-region Network Performance Monitoring (NPM) solution, delivering minute-level round-trip time visibility across \descriptionbold{150+ cloud regions} in multiple isolated OCI realms.}
+        \item {Designed, implemented, and migrated the global network telemetry pipeline from PySpark to \descriptionbold{Kafka Streams}, reducing costs from \descriptionbold{\$20K to \$10K/day} while processing metrics at \descriptionbold{\textasciitilde{}10Billion/min}.}
+        \item {Extended the global network telemetry pipeline to ingest metrics from OCI's \descriptionunderline{multiplanar network topology}. The overall pipeline processes metrics at \descriptionbold{\textasciitilde{}10Billion/min} across \descriptionunderline{\textasciitilde{}100 regions}, delivering metrics to customer monitoring systems in under \descriptionbold{10 seconds}.}
+        \item {Re-architected and migrated regional operations workloads from dedicated nodes to \descriptionbold{serverless} Functions, eliminating host maintenance and reducing infra cost to \descriptionbold{\textasciitilde{}\$0}.}
       \end{cvitems}
     }
   
@@ -22,15 +22,15 @@
     {
       \begin{cvitems}
         \item {Architected and built a Data as a Service (DaaS) platform managing \descriptionbold{10+ TB} of data across the organization,
-        cutting data-access turnaround time from \descriptionbold{3 days to under 5 minutes} while maintaining SOC 2 compliance.}
+        cutting data-access turnaround time from \descriptionbold{3 days to \textasciitilde{}5min} while maintaining SOC 2 compliance.}
         \item {Led development of an in-house \descriptionunderline{Unified Payments Interface (UPI) switch} that processed \descriptionbold{5M+} transactions daily.}
-        \item {Deployed a \descriptionbold{multi-region, on-premises Hardware Security Module (HSM)} solution for UPI PIN management, ensuring \descriptionunderline{high availability} and \descriptionunderline{disaster recovery}.}
-        \item {Built a memory-efficient UPI virtual payment address (VPA) blacklist with a \descriptionunderline{Bloom filter} to strengthen fraud prevention.}
-        \item {Built the Sanction Screening Service end to end, enabling checks against \descriptionbold{100+} global sanctions lists to prevent fraud.}
+        \item {Deployed a \descriptionbold{multi-region, on-premises} Hardware Security Module (\descriptionbold{HSM}) solution for UPI PIN management, supporting \descriptionbold{10M+ queries daily} while ensuring \descriptionunderline{high availability} and \descriptionunderline{disaster recovery}.}
+        \item {Built a memory-efficient UPI virtual payment address (VPA) blacklist with a \descriptionunderline{Bloom-Filter} to strengthen fraud prevention.}
+        \item {Built the Sanction Screening Service end to end, enabling checks against \descriptionbold{100+} global sanctions lists to reduce regulatory/compliance risk.}
         \item {Built the initial Avatar service to generate \descriptionbold{personalized profile avatars} from user selfies in \descriptionbold{real time}.}
         \item {Reduced risk-assessment latency \descriptionbold{10x}, from \descriptionunderline{20 seconds to under 2 seconds}, across \descriptionbold{100+ decision factors}.}
         \item {Designed and deployed an AWS \descriptionbold{Lambda-based NameMatch} service to compare names across sources, detect fraudulent patterns, and resolve cross-service inconsistencies, reducing customer onboarding errors by \descriptionbold{10\%}.}
-        \item {Integrated Sentry, APM, and VictoriaMetrics to improve monitoring and diagnostics.}
+        \item {Integrated Sentry, APM, and VictoriaMetrics across multiple services, improving monitoring and diagnostics.}
       \end{cvitems}
     }
   
@@ -43,8 +43,8 @@
       \begin{cvitems}
         \item {Integrated \descriptionunderline{Algolia's personalization engine} to tailor item displays and rankings to customer interaction history,
           increasing click-through rate (CTR) by \descriptionbold{40\%+}.}
-        \item {Coordinated with multiple teams to fix cross-page pricing inconsistencies
-          and deliver \descriptionbold{uniform prices} throughout the app.}
+        \item {Coordinated with multiple teams and fixed pricing discrepancies
+          so users saw \descriptionbold{consistent prices} across the app.}
         \item {Implemented regional best-seller features with real-time catalog updates, achieving a \descriptionbold{70\% add-to-cart rate} for featured items.}
       \end{cvitems}
     }
@@ -57,13 +57,10 @@
     {
       \begin{cvitems}
         \item {Led the migration from a \descriptionbold{monolith to microservices}, improving throughput by \descriptionbold{60\%} through optimized service boundaries and inter-service communication.}
-        \item {\descriptionbold{Containerized} the application and implemented CI/CD pipelines, cutting deployment time from hours to minutes.}
+        \item {\descriptionbold{Containerized} application and implemented CI/CD pipelines, cutting deployment time from hours to minutes.}
         \item {Built an \descriptionunderline{ML model deployment pipeline} using Amazon S3 and versioning,
           separating model artifacts from application code and enabling updates without \descriptionunderline{code changes}.}
-        \item {Designed and built an end-to-end document verification service covering data processing, extraction, and validation at \descriptionbold{50+ requests per second}.}
-        \item {Built an \descriptionbold{ID-card assessment and categorization} solution to identify card types and select the appropriate ML models for verification.}
         \item {Implemented \descriptionbold{end-to-end encryption} for cross-border data transfers using asymmetric encryption and key rotation.}
-        \item {Built a region-agnostic service that automatically masked personally identifiable information (PII), including ID numbers on identity cards.}
       \end{cvitems}
     }
 

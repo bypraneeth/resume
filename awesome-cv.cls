@@ -245,7 +245,7 @@
 \newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9.5pt}{11pt}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\descriptionstyle}[1]{{\fontsize{9.5pt}{11.5pt}\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of subentry
 \newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
@@ -548,7 +548,7 @@
 % Define a section for CV
 % Usage: \cvsection{<section-title>}
 \newcommand{\cvsection}[1]{
-  \par\addvspace{-1.0ex}
+  \par\addvspace{0ex}
   \phantomsection{}
   \sectionstyle{#1}
   \color{gray}\vhrulefill{0.9pt}
@@ -573,7 +573,7 @@
 \newcommand*{\cventry}[5]{
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
-  \par\addvspace{-2.0ex}
+  \par\addvspace{-1.5ex}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{12.5cm} R{4.5cm}}
     \ifempty{#2#3}
       {\entrytitlestyle{#1} & \entrydatestyle{#4} \\}
@@ -653,7 +653,7 @@
   \vspace{-4mm}
   \raggedright
   \hyphenpenalty=10000\relax
-  \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
+  \begin{itemize}[leftmargin=2ex, nosep, itemsep=1pt]
     \setlength{\parskip}{0pt}
     \renewcommand{\labelitemi}{\bullet}
 }{
