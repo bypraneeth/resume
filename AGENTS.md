@@ -14,8 +14,6 @@ user instructions when they change these defaults.
   edits small.
 - For design work, study references and inspect the actual result before
   declaring it finished. Visual quality and readability matter.
-- Reuse a working preview server. If its port is occupied by another
-  service, choose another port and report the actual URL.
 - Distinguish reviews from requested edits. Report what changed and what
   was actually checked.
 - Past permission to stage, commit, push, or deploy is not standing
@@ -106,12 +104,6 @@ user instructions when they change these defaults.
   artifacts outside the repository.
 
 ## Preview and deployment
-
-- Preview from the repository root:
-
-  ```sh
-  python3 -m http.server 8000 --directory portfolio
-  ```
 
 - GitHub Pages is the current deployment path. The workflow publishes
   portfolio/ automatically on pushes to master. Manual runs can deploy
