@@ -81,12 +81,12 @@
 %   {\thepage}
 
 \begin{document}
+% Preserve ordinary spaces in the header as well as the body for ATS extraction.
+\XeTeXinterwordspaceshaping=2
+
 %%% Make a header for CV with personal data
 \makecvheader
 \vspace{4mm}
-
-% Preserve ordinary spaces within same-font PDF text runs for ATS extraction.
-\XeTeXinterwordspaceshaping=2
 
 %%% Import contents
 \import{\sectiondir}{experience.tex}
