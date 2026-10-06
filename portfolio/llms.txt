@@ -1,0 +1,23 @@
+# Sai Praneeth
+
+> Personal resume of Sai Praneeth, Senior Software Engineer. Distributed Systems · Cloud · Fintech.
+
+## When to use this site
+
+Use this resume to review Sai Praneeth's engineering experience, accomplishments, technical skills, and education, or to find his public contact details and professional profiles.
+
+The HTML resume is the complete website version. The one-page PDF omits five accomplishments that appear on the website.
+
+## Resume
+
+- [Complete resume](https://resume.bypraneeth.com/): Career history, technical skills, education, and contact information in readable HTML.
+- [Experience](https://resume.bypraneeth.com/#experience): Roles and accomplishments at Oracle Cloud, Slice, Swiggy, and HyperVerge.
+- [Stacks](https://resume.bypraneeth.com/#stacks): Languages, frameworks, technologies, tools, and core competencies.
+- [Education](https://resume.bypraneeth.com/#education): Vellore Institute of Technology, B.Tech Computer Science.
+- [PDF version](https://resume.bypraneeth.com/SAI_PRANEETH_7YOE.pdf): One-page resume.
+
+## Contact and profiles
+
+- [Email](mailto:c.saipraneeth888@gmail.com)
+- [GitHub](https://github.com/bypraneeth)
+- [LinkedIn](https://www.linkedin.com/in/sai-praneeth-334195160/)
