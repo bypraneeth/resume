@@ -14,8 +14,6 @@ user instructions when they change these defaults.
   edits small.
 - For design work, study references and inspect the actual result before
   declaring it finished. Visual quality and readability matter.
-- Reuse a working preview server. If its port is occupied by another
-  service, choose another port and report the actual URL.
 - Distinguish reviews from requested edits. Report what changed and what
   was actually checked.
 - Past permission to stage, commit, push, or deploy is not standing
@@ -26,6 +24,11 @@ user instructions when they change these defaults.
 - Preserve shared content across LaTeX, the generated PDF, and HTML when
   making content changes that apply to both formats. Keep presentation-only
   changes scoped to their medium.
+- The website intentionally includes five accomplishments omitted from
+  the PDF: Slice's VPA/Bloom-Filter blacklist, and HyperVerge's document
+  verification, ID-card assessment, cross-border encryption, and PII
+  masking. Preserve these website-only bullets during synchronization;
+  do not add them to LaTeX or the PDF unless explicitly requested.
 - Preserve the reading order: header, Experience, Stacks, Education.
   Do not add About, Projects, Honors, or other sections unless requested.
 - Preserve complete accomplishments and employer order during conversion.
@@ -59,6 +62,10 @@ user instructions when they change these defaults.
 
 - Preserve the one-page A4 layout unless a requested change requires
   otherwise. Check compilation, extracted text, and rendered output.
+- After resume content edits and PDF rebuilds, check the rendered spacing
+  and fix crowded or uneven gaps without waiting for a separate request.
+  Preserve the established fonts, name spacing, and Stacks table layout
+  when adjusting other gaps.
 - For spacing changes, inspect the full page and the specific reported
   gap. Confirm the improvement is visible; changing the top margin alone
   does not establish that heading spacing is fixed.
@@ -106,12 +113,6 @@ user instructions when they change these defaults.
   artifacts outside the repository.
 
 ## Preview and deployment
-
-- Preview from the repository root:
-
-  ```sh
-  python3 -m http.server 8000 --directory portfolio
-  ```
 
 - GitHub Pages is the current deployment path. The workflow publishes
   portfolio/ automatically on pushes to master. Manual runs can deploy

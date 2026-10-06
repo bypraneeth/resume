@@ -245,7 +245,7 @@
 \newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9.5pt}{11pt}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\descriptionstyle}[1]{{\fontsize{9.5pt}{11.5pt}\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of subentry
 \newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
@@ -275,7 +275,8 @@
 \newcommand*{\letterenclosurestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
 
 \newcommand*{\atsSpace}{\char"0020\relax}
-% Replace a preceding inter-word skip with an explicit PDF text space before bold text.
+\ExplSyntaxOn
+% Preserve source spaces on both sides of bold text in the PDF text layer.
 \newcommand*{\descriptionbold}[1]{%
   {%
     \ifhmode
@@ -285,9 +286,9 @@
     \fi
     \textbf{#1}%
   }%
+  \peek_meaning_remove:NT \c_space_token { \atsSpace\allowbreak }%
 }
 % Underline the phrase and preserve a following source space in the PDF text layer.
-\ExplSyntaxOn
 \newcommand*{\descriptionunderline}[1]{%
   \underline{#1}%
   \peek_meaning_remove:NT \c_space_token { \atsSpace }%
@@ -396,8 +397,8 @@
 %-------------------------------------------------------------------------------
 % Define separator for social informations in header
 % Usage: \headersocialsep{<separator>}
-% Default: \quad\textbar\quad
-\newcommand*{\headersocialsep}[1][\quad\textbar\quad]{\def\@headersocialsep{#1}}
+% Explicit text spaces preserve extraction; extra spacing separates contacts.
+\newcommand*{\headersocialsep}[1][\atsSpace\kern0.75em\textbar\kern0.75em\atsSpace]{\def\@headersocialsep{#1}}
 \headersocialsep
 
 
@@ -423,107 +424,105 @@
 % Usage: \makecvheader
 \newcommand*{\makecvheader}{
   \begin{center}
-    \headerfirstnamestyle{
-      \@firstname
-    } \headerlastnamestyle{
-      \@lastname
-    }
+    \headerfirstnamestyle{\@firstname}\atsSpace\headerlastnamestyle{\@lastname}
     \\
-    \vspace{0.4mm}
+    \vspace{0.9mm}
     \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\}}
-    \vspace{0.4mm}
+    \vspace{0.9mm}
     \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\}}
     \vspace{-0.5mm}
-    \headersocialstyle{
-      \newbool{isstart}
-     \setbool{isstart}{true}
-     \ifthenelse{\isundefined{\@mobile}}
-       {}
-       {
-         \faMobile\ \@mobile
-         \setbool{isstart}{false}
-       }
-      \ifthenelse{\isundefined{\@email}}
-        {}
-        {
-          \ifbool{isstart}
-            {
-              \setbool{istart}{false} 
-            }
-            {\@headersocialsep}
-          \href{mailto:\@email}{\faEnvelope\ \@email}
-        }
-      \ifthenelse{\isundefined{\@homepage}}
-        {}
-        {
-          \ifbool{isstart}
-            {
-              \setbool{istart}{false} 
-            }
-            {\@headersocialsep}
-          \href{https://\@homepage}{\faHome\ \@homepage}
-        }
-      \ifthenelse{\isundefined{\@codechef}}
-        {}
-        {
-          \ifbool{isstart}
-            {
-              \setbool{istart}{false} 
-            }
-            {\@headersocialsep}
-          \href{https://codechef.com/users/\@codechef}{\faGithubSquare\ \@codechef}
-        }
-      \ifthenelse{\isundefined{\@github}}
-        {}
-        {
-          \ifbool{isstart}
-            {
-              \setbool{istart}{false} 
-            }
-            {\@headersocialsep}
-          \href{https://github.com/\@github}{\faGithubSquare\ \@github}
-        }
-      \ifthenelse{\isundefined{\@stackoverflowid}}
-        {}
-        {
-          \ifbool{isstart}
-            {
-              \setbool{istart}{false} 
-            }
-            {\@headersocialsep}
-          \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\ \@stackoverflowname}
-        }
-      \ifthenelse{\isundefined{\@linkedin}}
-        {}
-        {
-          \ifbool{isstart}
-            {
-              \setbool{istart}{false} 
-            }
-            {\@headersocialsep}
-          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\ \@linkedinname}
-        }
-      \ifthenelse{\isundefined{\@twitter}}
-        {}
-        {
-          \ifbool{isstart}
-            {
-              \setbool{istart}{false} 
-            }
-            {\@headersocialsep}
-          \href{https://twitter.com/\@twitter}{\faTwitter\ \@twitter}
-        }
-      \ifthenelse{\isundefined{\@skype}}
-        {}
-        {
-          \ifbool{isstart}
-            {
-              \setbool{istart}{false} 
-            }
-            {\@headersocialsep}
-          \faSkype\ \@skype
-        }
-    } \\
+    % Only explicit spaces should separate the contact fields.
+    \headersocialstyle{%
+      \newbool{isstart}%
+     \setbool{isstart}{true}%
+     \ifthenelse{\isundefined{\@mobile}}%
+       {}%
+       {%
+         \faMobile\atsSpace\@mobile%
+         \setbool{isstart}{false}%
+       }%
+      \ifthenelse{\isundefined{\@email}}%
+        {}%
+        {%
+          \ifbool{isstart}%
+            {%
+              \setbool{isstart}{false}%
+            }%
+            {\@headersocialsep}%
+          \mbox{\href{mailto:\@email}{\faEnvelope\atsSpace\@email}}%
+        }%
+      \ifthenelse{\isundefined{\@homepage}}%
+        {}%
+        {%
+          \ifbool{isstart}%
+            {%
+              \setbool{isstart}{false}%
+            }%
+            {\@headersocialsep}%
+          \mbox{\href{https://\@homepage}{\faHome\atsSpace https://\@homepage}}%
+        }%
+      \ifthenelse{\isundefined{\@codechef}}%
+        {}%
+        {%
+          \ifbool{isstart}%
+            {%
+              \setbool{isstart}{false}%
+            }%
+            {\@headersocialsep}%
+          \href{https://codechef.com/users/\@codechef}{\faGithubSquare\ \@codechef}%
+        }%
+      \ifthenelse{\isundefined{\@github}}%
+        {}%
+        {%
+          \ifbool{isstart}%
+            {%
+              \setbool{isstart}{false}%
+            }%
+            {\@headersocialsep}%
+          \mbox{\href{https://github.com/\@github}{\faGithubSquare\atsSpace\@github}}%
+        }%
+      \ifthenelse{\isundefined{\@stackoverflowid}}%
+        {}%
+        {%
+          \ifbool{isstart}%
+            {%
+              \setbool{isstart}{false}%
+            }%
+            {\@headersocialsep}%
+          \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\ \@stackoverflowname}%
+        }%
+      \ifthenelse{\isundefined{\@linkedin}}%
+        {}%
+        {%
+          \ifbool{isstart}%
+            {%
+              \setbool{isstart}{false}%
+            }%
+            {\@headersocialsep}%
+          \mbox{\href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\atsSpace\@linkedinname}}%
+        }%
+      \ifthenelse{\isundefined{\@twitter}}%
+        {}%
+        {%
+          \ifbool{isstart}%
+            {%
+              \setbool{isstart}{false}%
+            }%
+            {\@headersocialsep}%
+          \href{https://twitter.com/\@twitter}{\faTwitter\ \@twitter}%
+        }%
+      \ifthenelse{\isundefined{\@skype}}%
+        {}%
+        {%
+          \ifbool{isstart}%
+            {%
+              \setbool{isstart}{false}%
+            }%
+            {\@headersocialsep}%
+          \faSkype\ \@skype%
+        }%
+    }%
+    \\%
     \ifthenelse{\isundefined{\@quote}}
       {}
       {\vspace{6.0mm}\headerquotestyle{\@quote\\}\vspace{5.0mm}}
@@ -548,7 +547,7 @@
 % Define a section for CV
 % Usage: \cvsection{<section-title>}
 \newcommand{\cvsection}[1]{
-  \par\addvspace{-1.0ex}
+  \par\addvspace{0ex}
   \phantomsection{}
   \sectionstyle{#1}
   \color{gray}\vhrulefill{0.9pt}
@@ -573,7 +572,7 @@
 \newcommand*{\cventry}[5]{
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
-  \par\addvspace{-2.0ex}
+  \par\addvspace{-1.5ex}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{12.5cm} R{4.5cm}}
     \ifempty{#2#3}
       {\entrytitlestyle{#1} & \entrydatestyle{#4} \\}
@@ -635,6 +634,7 @@
 }{
     \end{tabular}
   \end{center}
+  \vspace{1ex}
 }
 % Define a line of cv information(skill)
 % Usage: \cvskill{<skillset>}
@@ -645,7 +645,7 @@
 }
 
 \newcommand*{\cvskillwithheading}[2]{
-	\skilltypestyle{#1} & \skillsetstyle{#2} \\
+  \skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
 
 % Define an environment for cvitems(for cventry)
@@ -653,7 +653,7 @@
   \vspace{-4mm}
   \raggedright
   \hyphenpenalty=10000\relax
-  \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
+  \begin{itemize}[leftmargin=2ex, nosep, itemsep=2pt]
     \setlength{\parskip}{0pt}
     \renewcommand{\labelitemi}{\bullet}
 }{

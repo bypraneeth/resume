@@ -407,10 +407,10 @@ html:active-view-transition a, html:active-view-transition .job { transition: no
             <p class="dates"><time datetime="2025-08">Aug 25</time> - Present</p>
           </header>
           <ul class="accomplishments">
-            <li>Designed, developed, and maintained OCI’s customer-facing inter-region Network Performance Monitoring (NPM) solution, delivering minute-level round-trip time visibility across <strong>150+ cloud regions</strong> in multiple isolated OCI realms.</li>
-            <li>Designed, implemented, and migrated the global network telemetry pipeline from PySpark to <strong>Kafka Streams</strong>, reducing costs from <strong>$20K to $10K/day</strong>.</li>
-            <li>Extended the global network telemetry pipeline to ingest metrics from OCI's <strong class="secondary">multiplanar network topology</strong>. The overall pipeline processes <strong>~10 billion metrics per minute</strong> across <strong>~100 regions</strong>, delivering metrics to customer monitoring systems in under <strong>10 seconds</strong>.</li>
-            <li>Re-architected and migrated regional operations workloads from dedicated hosts to <strong>serverless</strong> infrastructure, eliminating host maintenance and reducing infrastructure costs.</li>
+            <li>Designed, developed, and maintained OCI’s customer-facing realtime inter-region Network Performance Monitoring (NPM) solution, delivering minute-level round-trip time visibility across <strong>150+ cloud regions</strong> in multiple isolated OCI realms.</li>
+            <li>Designed, implemented, and migrated the global network telemetry pipeline from PySpark to <strong>Kafka Streams</strong>, reducing costs from <strong>$20K to $10K/day</strong> while processing metrics at <strong>~10Billion/min</strong>.</li>
+            <li>Extended the global network telemetry pipeline to ingest metrics from OCI's <strong class="secondary">multiplanar network topology</strong>. The overall pipeline processes metrics at <strong>~10Billion/min</strong> across <strong>~100 regions</strong>, delivering metrics to customer monitoring systems in under <strong>10 seconds</strong>.</li>
+            <li>Re-architected and migrated regional operations workloads from dedicated nodes to <strong>serverless</strong> Functions, eliminating host maintenance and reducing infra cost to <strong>~$0</strong>.</li>
           </ul>
         </article>
 
@@ -421,15 +421,15 @@ html:active-view-transition a, html:active-view-transition .job { transition: no
             <p class="dates"><time datetime="2022-06">June 22</time> - <time datetime="2025-08">Aug 25</time></p>
           </header>
           <ul class="accomplishments">
-            <li>Architected and built a Data as a Service (DaaS) platform managing <strong>10+ TB</strong> of data across the organization, cutting data-access turnaround time from <strong>3 days to under 5 minutes</strong> while maintaining SOC 2 compliance.</li>
+            <li>Architected and built a Data as a Service (DaaS) platform managing <strong>10+ TB</strong> of data across the organization, cutting data-access turnaround time from <strong>3 days to ~5min</strong> while maintaining SOC 2 compliance.</li>
             <li>Led development of an in-house Unified Payments Interface (<strong>UPI</strong>) switch that processed <strong>5M+</strong> transactions daily.</li>
-            <li>Deployed a <strong>multi-region, on-premises</strong> Hardware Security Module (<strong>HSM</strong>) solution for UPI PIN management, ensuring high availability and disaster recovery.</li>
-            <li>Built a memory-efficient UPI virtual payment address (VPA) blacklist with a <strong>Bloom filter</strong> to strengthen fraud prevention.</li>
-            <li>Built the Sanction Screening Service end to end, enabling checks against <strong>100+</strong> global sanctions lists to prevent fraud.</li>
+            <li>Deployed a <strong>multi-region, on-premises</strong> Hardware Security Module (<strong>HSM</strong>) solution for UPI PIN management, supporting <strong>10M+ queries daily</strong> while ensuring high availability and disaster recovery.</li>
+            <li>Built a memory-efficient UPI virtual payment address (VPA) blacklist with a <strong>Bloom-Filter</strong>, reducing unauthorized VPA assignments to strengthen fraud prevention.</li>
+            <li>Built the Sanction Screening Service end to end, enabling checks against <strong>100+</strong> global sanctions lists to reduce regulatory/compliance risk.</li>
             <li>Built the initial Avatar service to generate <strong class="secondary">personalized profile avatars</strong> from user selfies in <strong>real time</strong>.</li>
             <li>Reduced risk-assessment latency <strong>10x</strong>, from <strong>20 seconds to under 2 seconds</strong>, across <strong>100+ decision factors</strong>.</li>
             <li>Designed and deployed an <strong>AWS Lambda</strong><strong class="secondary">-based NameMatch</strong> service to compare names across sources, detect fraudulent patterns, and resolve cross-service inconsistencies, reducing customer onboarding errors by <strong>10%</strong>.</li>
-            <li>Integrated <strong class="secondary">Sentry, APM, and VictoriaMetrics</strong> to improve monitoring and diagnostics.</li>
+            <li>Integrated <strong class="secondary">Sentry, APM, and VictoriaMetrics</strong> across multiple services, improving MTTR for production incidents.</li>
           </ul>
         </article>
 
@@ -441,7 +441,7 @@ html:active-view-transition a, html:active-view-transition .job { transition: no
           </header>
           <ul class="accomplishments">
             <li>Integrated <strong class="secondary">Algolia's personalization engine</strong> to tailor item displays and rankings to customer interaction history, increasing click-through rate (CTR) by <strong>40%+</strong>.</li>
-            <li>Coordinated with multiple teams to fix cross-page pricing inconsistencies and deliver <strong class="secondary">uniform prices</strong> throughout the app.</li>
+            <li>Coordinated with multiple teams and fixed pricing discrepancies ensuring <strong>100% price consistency</strong> across the app.</li>
             <li>Implemented regional best-seller features with real-time catalog updates, achieving a <strong>70%</strong> <strong class="secondary">add-to-cart rate</strong> for featured items.</li>
           </ul>
         </article>
@@ -454,7 +454,7 @@ html:active-view-transition a, html:active-view-transition .job { transition: no
           </header>
           <ul class="accomplishments">
             <li>Led the migration from a <strong>monolith to microservices</strong>, improving throughput by <strong>60%</strong> through optimized service boundaries and inter-service communication.</li>
-            <li><strong class="secondary">Containerized</strong> the application and implemented CI/CD pipelines, cutting deployment time from hours to minutes.</li>
+            <li><strong class="secondary">Containerized</strong> application and implemented CI/CD pipelines, cutting deployment time from hours to minutes.</li>
             <li>Built an <strong>ML model deployment pipeline</strong> using Amazon S3 and versioning, separating model artifacts from application code and enabling updates without code changes.</li>
             <li>Designed and built an end-to-end document verification service covering data processing, extraction, and validation at <strong>50+ requests per second</strong>.</li>
             <li>Built an <strong class="secondary">ID-card assessment and categorization</strong> solution to identify card types and select the appropriate ML models for verification.</li>
