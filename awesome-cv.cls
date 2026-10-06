@@ -231,7 +231,7 @@
 % Configure styles for each CV elements
 % For fundamental structures
 \newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{text}\selectionbold{#1}}}
+\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{9pt}{11pt}\bodyfont\scshape\color{awesome} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{8pt}{10pt}\headerfont\color{text} #1}}
@@ -261,7 +261,7 @@
 \newcommand*{\honorlocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
 
 % For elements of skill
-\newcommand*{\skilltypestyle}[1]{{\fontsize{9.5pt}{11pt}\bodyfontlight\upshape\color{slightdarktext}\selectionbold{#1}}}
+\newcommand*{\skilltypestyle}[1]{{\fontsize{9.5pt}{11pt}\bodyfont\bfseries\color{slightdarktext} #1}}
 \newcommand*{\skillsetstyle}[1]{{\fontsize{9.5pt}{11pt}\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of the cover letter
@@ -276,15 +276,6 @@
 
 \newcommand*{\atsSpace}{\char"0020\relax}
 \ExplSyntaxOn
-% Thicken live text without a font change, so PDF viewers can select the full line.
-% A box stops XeTeX from shaping neighboring words into the emphasized run.
-\newcommand*{\selectionbold}[1]{%
-  \mbox{%
-    \special{pdf:code~q~\dim_to_decimal_in_bp:n {0.065em}~w~2~Tr}%
-    #1%
-    \special{pdf:code~Q}%
-  }%
-}
 % Preserve source spaces on both sides of bold text in the PDF text layer.
 \newcommand*{\descriptionbold}[1]{%
   {%
@@ -293,7 +284,7 @@
         \unskip\atsSpace
       \fi
     \fi
-    \selectionbold{#1}%
+    \textbf{#1}%
   }%
   \peek_meaning_remove:NT \c_space_token { \atsSpace\allowbreak }%
 }
@@ -433,11 +424,11 @@
 % Usage: \makecvheader
 \newcommand*{\makecvheader}{
   \begin{center}
-    \headerfirstnamestyle{\@firstname\atsSpace}\headerlastnamestyle{\@lastname}
+    \headerfirstnamestyle{\@firstname}\atsSpace\headerlastnamestyle{\@lastname}
     \\
-    \vspace{\dimexpr0.4mm+3pt\relax}
+    \vspace{0.9mm}
     \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\}}
-    \vspace{0.4mm}
+    \vspace{0.9mm}
     \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\}}
     \vspace{-0.5mm}
     % Only explicit spaces should separate the contact fields.
@@ -636,13 +627,14 @@
 
 % Define an environment for cvskill
 \newenvironment{cvskills}{
-  \par\begingroup
-    \fontsize{9.5pt}{11pt}\selectfont
-    \setlength{\parskip}{0pt}
-    \setlength{\parindent}{0pt}
-    \raggedright
+  \begin{center}
+    \setlength\tabcolsep{0pt}
+    \setlength{\extrarowheight}{0pt}
+    \begin{tabular}{@{} L{3.7cm} @{\hspace{0.3cm}} L{13cm} @{}}
 }{
-  \par\endgroup
+    \end{tabular}
+  \end{center}
+  \vspace{1ex}
 }
 % Define a line of cv information(skill)
 % Usage: \cvskill{<skillset>}
@@ -653,16 +645,7 @@
 }
 
 \newcommand*{\cvskillwithheading}[2]{
-  \begingroup
-  % Keep each label with its values when extractors infer separate columns.
-  \appto\pdfstringdefPreHook{\let\newline\space}
-  \pdfstringdef\@skilltext{#1\space#2}
-  \special{pdf:code /Span << /ActualText (\@skilltext) >> BDC}
-  \hangindent=4cm\hangafter=1
-  \noindent\makebox[4cm][l]{\skilltypestyle{#1}\skillsetstyle{\atsSpace}}%
-  \skillsetstyle{#2}%
-  \special{pdf:code EMC}\par
-  \endgroup
+  \skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
 
 % Define an environment for cvitems(for cventry)
@@ -670,7 +653,7 @@
   \vspace{-4mm}
   \raggedright
   \hyphenpenalty=10000\relax
-  \begin{itemize}[leftmargin=2ex, nosep, itemsep=1pt]
+  \begin{itemize}[leftmargin=2ex, nosep, itemsep=2pt]
     \setlength{\parskip}{0pt}
     \renewcommand{\labelitemi}{\bullet}
 }{
