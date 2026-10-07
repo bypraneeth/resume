@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,7 @@
   <meta name="twitter:description" content="Sai Praneeth, Senior Software Engineer in distributed systems, cloud and payments.">
   <meta name="twitter:image" content="https://resume.bypraneeth.com/social-preview.png">
   <meta name="twitter:image:alt" content="Sai Praneeth, Senior Software Engineer. Distributed Systems · Cloud · Fintech. resume.bypraneeth.com.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23245b3d'/%3E%3Cpath fill='%23d4efdd' d='M17 17h12v12H17zm18 0h12v12H35zM17 35h12v12H17zm18 0h12v12H35z'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='%234ade80'%3E%3Cpath transform='translate(-2 5) scale(.62 .82)' d='M51 10 47 26h-3c2-8-1-13-8-13-6 0-10 4-10 8 0 5 5 7 11 9 8 3 12 7 10 14-2 7-9 11-17 11-6 0-10-2-13-5l-2 4H12l4-17h3c-2 9 3 14 11 14 6 0 10-4 10-8 0-4-5-6-10-8-8-3-13-7-11-14 2-7 9-12 18-12 5 0 9 2 11 4l1-3Z'/%3E%3Cpath transform='translate(4 1.1) scale(.9 .96)' fill-rule='evenodd' d='M35 13h13c8 0 12 4 10 12-2 7-8 10.5-17 10.5h-2.8l-3.4 13h6.2l-.6 2.5H26l.6-2.5H30l8.8-33h-4.4Zm9 2.5-4.5 17H43c7 0 11-3.5 12-8.5 1.2-5.5-2.3-8.5-8.5-8.5Z'/%3E%3C/g%3E%3C/svg%3E">
 
   <script type="application/ld+json">
   {
@@ -58,13 +58,11 @@
   <script>
     (() => {
       const param = new URLSearchParams(window.location.search).get("scoutTheme");
-      const theme =
-        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      const theme = param || "dark";
       document.documentElement.setAttribute("data-theme", theme);
     })();
 
     (() => {
-      const system = matchMedia('(prefers-color-scheme: dark)');
       const reduced = matchMedia('(prefers-reduced-motion: reduce)');
       const root = document.documentElement;
       const storageKey = 'resume-color-theme';
@@ -83,7 +81,7 @@
       } catch (error) {
         storageUnavailable(error);
       }
-      const currentTheme = () => preference ?? (system.matches ? 'dark' : 'light');
+      const currentTheme = () => preference ?? 'dark';
       const apply = (animate = false) => {
         const update = () => {
           const theme = currentTheme();
@@ -111,7 +109,6 @@
         }
       };
       apply();
-      system.addEventListener('change', () => { if (preference === null) apply(true); });
       document.addEventListener('DOMContentLoaded', () => {
         const controls = document.querySelector('.theme-controls');
         toggle = controls.querySelector('.theme-toggle');
@@ -518,9 +515,9 @@ html:active-view-transition a, html:active-view-transition .job { transition: no
           <dt>Frameworks</dt>
           <dd>Spring Boot, Gin, FastAPI, Django, Flask, Express, Fastify, NestJS</dd>
           <dt>Technologies &amp; Tools</dt>
-          <dd>AWS, OCI, Docker, Kubernetes, PostgreSQL, MySQL, Redis, MongoDB, Elasticsearch, Spark, Kafka, Git, Linux, ArgoCD, Grafana, Prometheus, Terraform, Micrometer, VictoriaMetrics</dd>
+          <dd>AWS, OCI, Docker, Kubernetes, PostgreSQL, MySQL, Redis, MongoDB, Elasticsearch, Spark, Kafka, Git, Linux, ArgoCD, Grafana, Prometheus, Terraform, VictoriaMetrics, REST, gRPC, MCP</dd>
           <dt>Core Competencies</dt>
-          <dd>Distributed Systems, Microservices, Object-Oriented Design, Database Design, SQL, NoSQL, Data Structures &amp; Algorithms, REST, gRPC</dd>
+          <dd>Distributed Systems, Microservices, Object-Oriented Design, Database Design, SQL, NoSQL, Data Structures &amp; Algorithms</dd>
         </dl>
       </section>
 
